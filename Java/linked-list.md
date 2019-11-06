@@ -1,14 +1,14 @@
-## linked lists
+# Linked lists
 + [Merge Two Sorted Lists](#merge-two-sorted-lists)
-## Merge Two Sorted Lists
+
+### Merge Two Sorted Lists
 
 Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.
 
 Example:
 
 Input: 1->2->4, 1->3->4
-Output: 1->1->2->3->4->4/
-
+Output: 1->1->2->3->4->4
 
 ``` java
  Definition for singly-linked list.
