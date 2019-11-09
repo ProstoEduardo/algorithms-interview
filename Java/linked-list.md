@@ -237,7 +237,13 @@ class Solution {
 			}
 			cur = cur.next;
 		}
-		cur.next = (l1 == null) ? l2 : l1; 
+
+		  if (l1 != null) {
+		    cur.next = l1;
+		  } 
+		  if (l2 != null) {
+		    cur.next = l2;
+		  }
 
 		return dummy.next;
 	}
