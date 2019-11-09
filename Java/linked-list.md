@@ -207,32 +207,39 @@ Output: -1->0->3->4->5
  * }
  */
 class Solution {
-    public ListNode sortList(ListNode head) {
-        ListNode curr = head;
-        ListNode fast = head;
-        int count = 0;
-        if (head == null){
-            return head;
-        }
-        while (curr != null) {
-            curr = curr.next;
-            count++;
-        } 
-        curr = head;
-        int [] arr = new int[count];
-        int i = 0;
-        while (curr != null){
-            arr[i] = curr.val;
-            i++;
-            curr = curr.next;
-        }
-        Arrays.sort(arr);
-        curr = head;
-        for(int j = 0; j < arr.length; j++){
-           curr.val = arr[j];
-           curr = curr.next;
-        }
-        return head;
-    }    
+	public ListNode sortList(ListNode head) {
+		if (head == null || head.next == null) return head;
+		ListNode fast = head.next.next;
+		ListNode slow = head;
+		while (fast != null && fast.next != null) {
+			fast = fast.next.next;
+			slow = slow.next;
+		}
+
+		ListNode l1 = sortList(slow.next);
+		slow.next = null;
+		ListNode l2 = sortList(head);
+		return merge(l1, l2);
+	}
+
+	public ListNode merge(ListNode l1, ListNode l2) {
+		ListNode dummy = new ListNode(-1);
+		ListNode cur = dummy;
+
+		while (l1 != null && l2 != null) {
+			if (l1.val < l2.val) {
+				cur.next = l1;
+				l1 = l1.next;
+			}
+			else {
+				cur.next = l2;
+				l2 = l2.next;
+			}
+			cur = cur.next;
+		}
+		cur.next = (l1 == null) ? l2 : l1; 
+
+		return dummy.next;
+	}
 }
 ```
