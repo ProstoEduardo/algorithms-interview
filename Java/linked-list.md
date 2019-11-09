@@ -2,6 +2,7 @@
 + [Merge Two Sorted Lists](#merge-two-sorted-lists)
 + [Reverse Linked List](#reverse-linked-list)
 + [Palindrome Linked List](#palindrome-linked-list)
++ [Sort List](#sort-list)
 
 ### Merge Two Sorted Lists
 
@@ -180,5 +181,58 @@ class Solution {
         }
         return root;
     }
+}
+```
+## Sort List
+
+Sort a linked list in O(n log n) time using constant space complexity.
+
+Example 1:
+```
+Input: 4->2->1->3
+Output: 1->2->3->4
+```
+Example 2:
+```
+Input: -1->5->3->4->0
+Output: -1->0->3->4->5
+```
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode sortList(ListNode head) {
+        ListNode curr = head;
+        ListNode fast = head;
+        int count = 0;
+        if (head == null){
+            return head;
+        }
+        while (curr != null) {
+            curr = curr.next;
+            count++;
+        } 
+        curr = head;
+        int [] arr = new int[count];
+        int i = 0;
+        while (curr != null){
+            arr[i] = curr.val;
+            i++;
+            curr = curr.next;
+        }
+        Arrays.sort(arr);
+        curr = head;
+        for(int j = 0; j < arr.length; j++){
+           curr.val = arr[j];
+           curr = curr.next;
+        }
+        return head;
+    }    
 }
 ```
