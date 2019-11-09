@@ -122,7 +122,7 @@ Output: true
 
 ```
 
-```
+``` java
 /**
  * Definition for singly-linked list.
  * public class ListNode {
