@@ -1,6 +1,7 @@
 # Linked lists
 + [Merge Two Sorted Lists](#merge-two-sorted-lists)
 + [Reverse Linked List](#reverse-linked-list)
++ [Palindrome Linked List](#palindrome-linked-list)
 
 ### Merge Two Sorted Lists
 
@@ -96,5 +97,88 @@ public Node reverseList(Node head) {
       head = parent;                // head = 1
     }
     return head;
+}
+```
+
+
+## Palindrome Linked List
+
+Given a singly linked list, determine if it is a palindrome.
+
+Example 1:
+
+```
+Input: 1->2
+Output: false
+
+```
+
+Example 2:
+
+
+```
+Input: 1->2->2->1
+Output: true
+
+```
+
+```
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+ 
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        if (head == null || head.next == null)
+            return true;
+        
+        //Step 1: Bisect at mid
+        ListNode head2 = bisect(head);
+        
+        //Step 2: Reverse second head
+        head2 = reverse(head2);
+        
+        //Step 3: Check for equality
+        return isEqual(head, head2);
+    }
+    
+    private boolean isEqual(ListNode head, ListNode head2) {
+        while (head != null) {
+            if (head.val != head2.val)
+                return false;
+            head = head.next;
+            head2 = head2.next;
+        }
+        return true;
+    }
+    
+    private ListNode bisect(ListNode head) {
+        ListNode fast = head, slow = head, prev = null;
+        while (fast != null && fast.next != null) {
+            prev = slow;
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        prev.next = null;
+        return slow;
+    }
+    
+    private ListNode reverse(ListNode head) {
+        if (head == null || head.next == null)
+            return head;
+        ListNode root = head;
+        while (head != null && head.next != null) {
+            ListNode next = head.next, nextNext = next.next;
+            next.next = root;
+            head.next = nextNext;
+            root = next;
+        }
+        return root;
+    }
 }
 ```
