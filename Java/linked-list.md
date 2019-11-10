@@ -302,11 +302,15 @@ public class Solution {
             if(a == null){
                 a = headB;
             }
-            else a = a.next;
+            else { 
+	    	a = a.next;
+	    }
             if(b == null){
                 b = headA;
             }
-            else b = b.next;  
+            else { 
+	    b = b.next;
+	    }  
         }
         return a;
     }
