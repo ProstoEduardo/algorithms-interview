@@ -252,6 +252,8 @@ class Solution {
 ```
 ### Merge Two Sorted Lists
 
+https://leetcode.com/problems/merge-two-sorted-lists/
+
 Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.
 
 Example:
@@ -292,6 +294,8 @@ class Solution {
 }
 ```
 ## Reverse Linked List
+
+https://leetcode.com/problems/reverse-linked-list/
 
 Reverse a singly linked list.
 
@@ -349,6 +353,8 @@ public Node reverseList(Node head) {
 
 ## Palindrome Linked List
 
+https://leetcode.com/problems/palindrome-linked-list/
+
 Given a singly linked list, determine if it is a palindrome.
 
 Example 1:
@@ -358,10 +364,7 @@ Input: 1->2
 Output: false
 
 ```
-
 Example 2:
-
-
 ```
 Input: 1->2->2->1
 Output: true
