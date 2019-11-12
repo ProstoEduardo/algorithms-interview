@@ -1,6 +1,7 @@
 # Linked lists
 + [Design Linked List](#design-linked-list)
 + [Middle of the Linked List](#middle-of-the-linked-list)
++ [Remove Nth Node From End of List](#remove-nth-node-from-end-of-list)
 + [Merge Two Sorted Lists](#merge-two-sorted-lists)
 + [Reverse Linked List](#reverse-linked-list)
 + [Palindrome Linked List](#palindrome-linked-list)
@@ -208,7 +209,47 @@ class Solution {
     }
 }
 ```
+## Remove Nth Node From End of List
 
+https://leetcode.com/problems/remove-nth-node-from-end-of-list/
+
+Given a linked list, remove the n-th node from the end of list and return its head.
+
+Example:
+```
+Given linked list: 1->2->3->4->5, and n = 2.
+
+After removing the second node from the end, the linked list becomes 1->2->3->5.
+```
+
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ * int val;
+ * ListNode next;
+ * ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode node = new ListNode(0);
+        node.next = head;
+        ListNode first = node;
+        ListNode second = node;
+        for (int i = 1; i <= n + 1; i++) {
+            first = first.next;
+
+        }
+        while (first != null) {
+            first = first.next;
+            second = second.next;
+        }
+        second.next = second.next.next;
+        return node.next;
+    }
+}
+```
 ### Merge Two Sorted Lists
 
 Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.
