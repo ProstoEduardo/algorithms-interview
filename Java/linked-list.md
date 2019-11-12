@@ -4,7 +4,7 @@
 + [Palindrome Linked List](#palindrome-linked-list)
 + [Sort List](#sort-list)
 + [Intersection of Two Linked Lists](#intersection-of-two-linked-lists)
-+ [Reorder List](#reaorder-list)
++ [Reorder List](#reorder-list)
 
 ### Merge Two Sorted Lists
 
