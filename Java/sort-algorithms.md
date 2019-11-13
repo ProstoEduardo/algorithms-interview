@@ -1,4 +1,7 @@
-+ [Sort an Array](#sort-an-array)
++ [Bubble Sort](#bubble-sort)
++ [MergeSort](#mergesort)
++ [QuickSort](#quicksort)
+
 ## Sort an Array
 
 Given an array of integers nums, sort the array in ascending order.
