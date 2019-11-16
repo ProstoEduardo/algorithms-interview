@@ -21,14 +21,14 @@ class Solution {
     public int search(int[] nums, int target) {
         int l = 0;
         int r =nums.length - 1;
-        int count;
+        int middle;
         while (l <= r) {
-            count = l + (r - l) / 2;
-            if (nums[count] == target){
-                return count;}
-            if (target < nums[count]){
-                r = count - 1;}
-            else {l = count + 1;}
+            middle = l + (r - l) / 2;
+            if (nums[middle] == target){
+                return middle;}
+            if (target < nums[middle]){
+                r = middle - 1;}
+            else {l = middle + 1;}
         }
     return -1;
     }
