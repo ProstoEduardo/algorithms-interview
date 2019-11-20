@@ -63,33 +63,40 @@ class MinStack {
 ```
 or
 ```java
-class MinStack {
-int max = 100000;
-int[] val =new int[max];
-int[] min = new int[max];
-int top = -1;
+ class MinStack {
 
-public void push(int x) {
-    
-    int newMin =  (top<0 || x<min[top] ) ? x : min[top]  ;
-    
-    top++;
-    
-    val[top] = x;
-    min[top] = newMin;
+        private class Entry {
+            int value;
+            Entry previous;
+            int min;
 
-}
+            public Entry(int value, Entry entry) {
+                this.value = value;
+                this.previous = entry;
+            }
+        }
 
-public void pop() {
-    if(top>=0)
-        top--;
-}
+        Entry top;
 
-public int top() {
-    return val[top];
-}
+        public MinStack() {
+        }
 
-public int getMin() {
-    return min[top];
-}
+        public void push(int x) {
+            Entry current = new Entry(x, top);
+            current.min = (top != null && top.min < current.value) ? top.min : current.value;
+            top = current;
+        }
+
+        public void pop() {
+            top = top.previous;
+        }
+
+        public int top() {
+            return top.value;
+        }
+
+        public int getMin() {
+            return top.min;
+        }
+    }
 ```
