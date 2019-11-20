@@ -30,27 +30,66 @@ minStack.getMin();   --> Returns -2.
 
 ```java
 class MinStack {
-    ArrayList<Integer> list = new ArrayList<Integer>();
-    public MinStack() {    
-    }    
+    Stack<Integer> stack = new Stack<>();
+    Stack<Integer> minStack = new Stack<>(); // keeps track of minimums
+
+    // Always push onto stack. If it's a minimum, also push it onto minStack
     public void push(int x) {
-             list.add(x);        
+        stack.push(x);
+        if (minStack.isEmpty() || x <= getMin()) {
+            minStack.push(x);
+        }
     }
-    
+
+    // Pop off stack. If we popped a minimum, we remove it from minStack also
     public void pop() {
-        list.remove(list.size()-1);        
+        if (stack.isEmpty()) {
+            return;
+        }
+        int x = stack.pop();
+        if (x == minStack.peek()) {
+            minStack.pop();
+        }
     }
-    
+
     public int top() {
-        if(list.size() >0)
-            return list.get(list.size()-1);
-        
-        return 0;
-        
+        return stack.peek();
     }
-    
+
     public int getMin() {
-        return Collections.min(list);
+        return minStack.peek();
     }
+}
+```
+or
+```java
+class MinStack {
+int max = 100000;
+int[] val =new int[max];
+int[] min = new int[max];
+int top = -1;
+
+public void push(int x) {
+    
+    int newMin =  (top<0 || x<min[top] ) ? x : min[top]  ;
+    
+    top++;
+    
+    val[top] = x;
+    min[top] = newMin;
+
+}
+
+public void pop() {
+    if(top>=0)
+        top--;
+}
+
+public int top() {
+    return val[top];
+}
+
+public int getMin() {
+    return min[top];
 }
 ```
