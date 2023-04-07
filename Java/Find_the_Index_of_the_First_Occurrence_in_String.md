@@ -1,6 +1,6 @@
 https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/description/
 
-#28.Задача на поиск подстроки в строке
+#28.Задача на поиск первого вхождения подстроки в строке
 
 1 реализация, универсальный поиск.Сложность О(n*m)
 
